@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    //variabili di handlebars
+    var source = $('#scheda-template').html();
+    var templateFilm = Handlebars.compile(source);
+
     $('button').click(function(){
         var titoloInserito = $('input').val();
         $.ajax({
@@ -14,10 +18,15 @@ $(document).ready(function(){
                 var films = data.results;
                 for (var i = 0; i < films.length; i++) {
                     var film = films[i];
-                        console.log(film.title);
-                        console.log(film.original_title);
-                        console.log(film.language);
-                        console.log(film.vote_average);
+                    var movieTemplate = {
+                        titolo: film.title,
+                        titoloOriginale: film.original_title,
+                        lingua: film.original_language,
+                        voto: film.vote_average
+                    };
+                    console.log(movieTemplate);
+                    var schedaFilm = templateFilm(movieTemplate);
+                    $('.container-interno').append(schedaFilm);
                 };
             },
             error: function(err){

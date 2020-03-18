@@ -17,3 +17,17 @@ header {
     padding-top: 20px;
     padding-left: 50px;
 }
+.container-interno {
+    margin: 0 auto;
+    width: 800px;
+    height: 100%;
+    background-color: #222222;
+}
+.card {
+    width: 180px;
+    height: 400px;
+    background-color: black;
+}
+.card-text {
+    color: white;
+}
