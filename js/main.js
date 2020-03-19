@@ -18,16 +18,17 @@ $(document).ready(function(){
                 var films = data.results;
                 for (var i = 0; i < films.length; i++) {
                     var film = films[i];
+                    var vote = votoInteger(film.vote_average);//utilizzo la funzione voteInteger per trovare intero da 1 a 5
+                    console.log(vote);
                     var movieTemplate = {
                         titolo: film.title,
                         titoloOriginale: film.original_title,
                         lingua: film.original_language,
-                        voto: film.vote_average
+                        voto: vote
                     };
                     var schedaFilm = templateFilm(movieTemplate);
                     $('.container-interno').append(schedaFilm);
-                    var votoInteger = Math.ceil(film.vote_average / 2);
-                    console.log(votoInteger);
+
                 };
 
             },
@@ -38,5 +39,11 @@ $(document).ready(function(){
 
 
     });
+    //funzione per trovare numero intero da 1 a 5;
+    function votoInteger(vote) {
+    var votoFilm = Math.ceil(vote / 2);
+    return votoFilm;
+};
+
 
 });
