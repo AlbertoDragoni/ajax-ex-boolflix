@@ -24,10 +24,12 @@ $(document).ready(function(){
                         lingua: film.original_language,
                         voto: film.vote_average
                     };
-                    console.log(movieTemplate);
                     var schedaFilm = templateFilm(movieTemplate);
                     $('.container-interno').append(schedaFilm);
+                    var votoInteger = Math.ceil(film.vote_average / 2);
+                    console.log(votoInteger);
                 };
+
             },
             error: function(err){
                 alert('error, try again!')
