@@ -26,9 +26,18 @@ $(document).ready(function(){
                         lingua: film.original_language,
                         voto: vote
                     };
+                    $('.stars').hide();
+                    if (vote < 2) {
+                        $('.prima').show();
+                    } else if (vote < 3) {
+                        $('.prima, .seconda').show();
+                    } else if (vote < 4) {
+                        $('.prima, .seconda, .terza').show();
+                    } else if (vote < 5) {
+                        $('.stars').show();
+                    };
                     var schedaFilm = templateFilm(movieTemplate);
                     $('.container-interno').append(schedaFilm);
-
                 };
 
             },
