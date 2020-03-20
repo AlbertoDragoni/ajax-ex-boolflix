@@ -3,12 +3,12 @@ $(document).ready(function(){
 
 
     var apiBaseUrl = 'https://api.themoviedb.org/3'; //variabile dell'url di base della chiamata API
-    var star= '';
+
     $('input').val('');
     $('button').click(function(){                    //al click sul bottone esegui funzione cercaFilm
         cercaFilm();
         cercaSerie();
-        // stars();
+        stars();
     });
 
 
@@ -16,7 +16,7 @@ $(document).ready(function(){
         if (event.keyCode == 13) {
             cercaFilm();
             cercaSerie();
-            // stars();
+            stars();
         };
     });
 
@@ -31,7 +31,6 @@ $(document).ready(function(){
         var source = $('#scheda-template').html();              //variabili di handlebars
         var templateFilm = Handlebars.compile(source);          //variabili di handlebars
         var titoloInserito = $('input').val();
-
         $.ajax({
             url: apiBaseUrl + '/search/movie',
             data: {
@@ -53,7 +52,8 @@ $(document).ready(function(){
                         titoloOriginale: film.original_title,
                         lingua: film.original_language,
                         voto: vote,
-                        stelle: star
+                        siglaStato: flagg(film.original_language),
+                        stelle: stars(vote),
                     };
 
                     var schedaFilm = templateFilm(movieTemplate);
@@ -66,19 +66,29 @@ $(document).ready(function(){
             }
         });
     };
+
     //funzione per voto a stelle
     function stars (voto) {
-    voto = Math.ceil(voto / 2);
-
-    for (var i = 1; i <= 5; i++) {
-        if (i <= voto) {
-            star += '<i class="fas fa-star"></i>';
-        }else {
-            star += '<i class="far fa-star"></i>';
+        var star= '';
+        for (var i = 1; i <= 5; i++) {
+            if (i <= voto) {
+                star += '<i class="fas fa-star"></i>';
+            }else {
+                star += '<i class="far fa-star"></i>';
+            }
         }
-    }
-    return star;
+        return star;
 };
+    //funzione bandierine
+     function flagg(siglaStato) {                                 //le due 'g' sono un omaggio a Stephen King
+         console.log(siglaStato);
+          var bandiera = siglaStato;
+          if (siglaStato == 'en') {
+               bandiera = 'us';
+          }
+          return bandiera;
+     };
+
 
     //funzione per la ricerca di serie tv
     function cercaSerie() {
@@ -119,6 +129,4 @@ $(document).ready(function(){
             }
         });
     };
-
-
 });
