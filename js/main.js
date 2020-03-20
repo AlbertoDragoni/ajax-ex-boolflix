@@ -3,12 +3,20 @@ $(document).ready(function(){
 
 
     var apiBaseUrl = 'https://api.themoviedb.org/3'; //variabile dell'url di base della chiamata API
+    var star= '';
+    $('input').val('');
+    $('button').click(function(){                    //al click sul bottone esegui funzione cercaFilm
+        cercaFilm();
+        cercaSerie();
+        // stars();
+    });
 
-    $('button').click(cercaFilm, cercaSerie);                   //al click sul bottone esegui funzione cercaFilm
+
     $('input').keypress(function(event){            //se schiacci enter parte la funzione cercaFilm
         if (event.keyCode == 13) {
             cercaFilm();
             cercaSerie();
+            // stars();
         };
     });
 
@@ -23,7 +31,7 @@ $(document).ready(function(){
         var source = $('#scheda-template').html();              //variabili di handlebars
         var templateFilm = Handlebars.compile(source);          //variabili di handlebars
         var titoloInserito = $('input').val();
-        $('input').val('');
+
         $.ajax({
             url: apiBaseUrl + '/search/movie',
             data: {
@@ -44,18 +52,10 @@ $(document).ready(function(){
                         titolo: film.title,
                         titoloOriginale: film.original_title,
                         lingua: film.original_language,
-                        voto: vote
+                        voto: vote,
+                        stelle: star
                     };
-                    $('.stars').hide();
-                    if (vote > 1 && vote <= 2)  {
-                        $('.prima').show();
-                    } else if (vote > 2 && vote <= 3) {
-                        $('.prima, .seconda').show();
-                    } else if (vote > 3 && vote <= 4) {
-                        $('.prima, .seconda, .terza').show();
-                    } else if (vote > 4 && vote <= 5) {
-                        $('.stars').show();
-                    };
+
                     var schedaFilm = templateFilm(movieTemplate);
                     $('.container-interno-film').append(schedaFilm);
                 };
@@ -66,12 +66,25 @@ $(document).ready(function(){
             }
         });
     };
+    //funzione per voto a stelle
+    function stars (voto) {
+    voto = Math.ceil(voto / 2);
+
+    for (var i = 1; i <= 5; i++) {
+        if (i <= voto) {
+            star += '<i class="fas fa-star"></i>';
+        }else {
+            star += '<i class="far fa-star"></i>';
+        }
+    }
+    return star;
+};
+
     //funzione per la ricerca di serie tv
     function cercaSerie() {
         var source = $('#scheda-template-serie').html();        //variabili di handlebars
         var templateSerie = Handlebars.compile(source);         //variabili di handlebars
         var titoloInserito = $('input').val();
-        $('input').val('');
         $.ajax({
             url: apiBaseUrl + '/search/tv',
             data: {
@@ -97,7 +110,7 @@ $(document).ready(function(){
                     };
 
                     var schedaSerie = templateSerie(serieTemplate);
-                    $('.container-interno-serie').append(schedaSerie);
+                    $('.container-interno-film').append(schedaSerie);
                 };
 
             },

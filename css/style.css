@@ -23,12 +23,7 @@ header {
     min-height: 100%;
     background-color: #222222;
 }
-.container-interno-serie {
-    margin: 0 auto;
-    width: 800px;
-    min-height: 100%;
-    background-color: #222222;
-}
+
 .card {
     width: 180px;
     height: 300px;
@@ -36,6 +31,9 @@ header {
 }
 .card-text {
     color: white;
+}
+.card-text-serie {
+    color: red;
 }
 .stars {
     display: flex;
