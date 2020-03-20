@@ -1,15 +1,14 @@
 $(document).ready(function(){
 
-    //variabili di handlebars
-    var source = $('#scheda-template').html();
-    var templateFilm = Handlebars.compile(source);
+
 
     var apiBaseUrl = 'https://api.themoviedb.org/3'; //variabile dell'url di base della chiamata API
 
-    $('button').click(cercaFilm);                   //al click sul bottone esegui funzione cercaFilm
+    $('button').click(cercaFilm, cercaSerie);                   //al click sul bottone esegui funzione cercaFilm
     $('input').keypress(function(event){            //se schiacci enter parte la funzione cercaFilm
         if (event.keyCode == 13) {
             cercaFilm();
+            cercaSerie();
         };
     });
 
@@ -21,6 +20,8 @@ $(document).ready(function(){
 
     //funzione per la ricerca di film;
     function cercaFilm() {
+        var source = $('#scheda-template').html();              //variabili di handlebars
+        var templateFilm = Handlebars.compile(source);          //variabili di handlebars
         var titoloInserito = $('input').val();
         $('input').val('');
         $.ajax({
@@ -56,7 +57,47 @@ $(document).ready(function(){
                         $('.stars').show();
                     };
                     var schedaFilm = templateFilm(movieTemplate);
-                    $('.container-interno').append(schedaFilm);
+                    $('.container-interno-film').append(schedaFilm);
+                };
+
+            },
+            error: function(err){
+                alert('error, try again!')
+            }
+        });
+    };
+    //funzione per la ricerca di serie tv
+    function cercaSerie() {
+        var source = $('#scheda-template-serie').html();        //variabili di handlebars
+        var templateSerie = Handlebars.compile(source);         //variabili di handlebars
+        var titoloInserito = $('input').val();
+        $('input').val('');
+        $.ajax({
+            url: apiBaseUrl + '/search/tv',
+            data: {
+                api_key: 'cbbcf8d31c832a4d583973d89a0f4bb4',
+                query: titoloInserito,
+                language: 'it-IT'
+            },
+            method: 'GET',
+            success: function(data){
+                var series = data.results;
+                console.log(series);
+                for (var i = 0; i < series.length; i++) {
+                    var serie = series[i];
+                    console.log(serie);
+                    var vote = votoInteger(serie.vote_average);//utilizzo la funzione voteInteger per trovare intero da 1 a 5
+                    console.log(vote);
+                    var serieTemplate = {
+                        movieCover: serie.poster_path,
+                        titolo: serie.name,
+                        titoloOriginale: serie.original_name,
+                        lingua: serie.original_language,
+                        voto: vote
+                    };
+
+                    var schedaSerie = templateSerie(serieTemplate);
+                    $('.container-interno-serie').append(schedaSerie);
                 };
 
             },

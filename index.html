@@ -16,9 +16,8 @@
                     <button type="button" name="button">CERCA</button>
                 </div>
             </header>
-            <div class="container-interno">
-
-            </div>
+            <div class="container-interno-film"> </div>
+            <div class="container-interno-serie"> </div>
             <script id="scheda-template" type="text/x-handlebars-template">
                 <div class="card">
                     <div class="card-text">
@@ -34,6 +33,17 @@
                             <i class="fas quarta fa-star"></i>
                             <i class="fas quinta fa-star"></i>
                         </div>
+                    </div>
+                </div>
+            </script>
+            <script id="scheda-template-serie" type="text/x-handlebars-template">
+                <div class="card">
+                    <div class="card-text">
+                        <img src="{{movieCover}}" alt="">
+                        <p>Titolo: <span>{{titolo}}</span></p>
+                        <p>Titolo originale: <span>{{titoloOriginale}}</span></p>
+                        <p>Lingua originale: <span>{{lingua}}</span></p>
+                        <p>Voto: <span>{{voto}}</span></p>
                     </div>
                 </div>
             </script>
