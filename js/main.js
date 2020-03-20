@@ -4,6 +4,8 @@ $(document).ready(function(){
     var source = $('#scheda-template').html();
     var templateFilm = Handlebars.compile(source);
 
+    var apiBaseUrl = 'https://api.themoviedb.org/3'; //variabile dell'url di base della chiamata API
+
     $('button').click(cercaFilm);                   //al click sul bottone esegui funzione cercaFilm
     $('input').keypress(function(event){            //se schiacci enter parte la funzione cercaFilm
         if (event.keyCode == 13) {
@@ -16,10 +18,11 @@ $(document).ready(function(){
     var votoFilm = Math.ceil(vote / 2);
     return votoFilm;
     };
+
     //funzione per la ricerca di film;
     function cercaFilm() {
         var titoloInserito = $('input').val();
-        var apiBaseUrl = 'https://api.themoviedb.org/3';
+        $('input').val('');
         $.ajax({
             url: apiBaseUrl + '/search/movie',
             data: {
