@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     var apiBaseUrl = 'https://api.themoviedb.org/3'; //variabile dell'url di base della chiamata API
 
-    $('input').val('');
+    $('input').val('');                             //pulisco l'input dal testo precedente
     $('button').click(function(){                    //al click sul bottone esegui funzione cercaFilm
         cercaFilm();
         cercaSerie();
@@ -41,6 +41,7 @@ $(document).ready(function(){
             method: 'GET',
             success: function(data){
                 var films = data.results;
+                $('.container-interno-film').empty();
                 for (var i = 0; i < films.length; i++) {
                     var film = films[i];
                     console.log(film);
