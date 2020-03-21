@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>BoolFlix</title>
         <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js'></script>
         <script src="https://kit.fontawesome.com/8b28a66c17.js" crossorigin="anonymous"></script>
@@ -11,13 +12,17 @@
     <body>
         <div class="container-fullwidth">
             <header>
+                <div class="logo-boolflix">
+                    <h3>boolflix</h3>
+                </div>
                 <div class="ricerca">
-                    <input placeholder="Scegli il film">
+                    <input placeholder="  Cosa vuoi vedere?">
                     <button type="button" name="button">CERCA</button>
                 </div>
             </header>
             <div class="container-interno-film"> </div>
             <div class="container-interno-serie"> </div>
+            <!-- template per film e serie -->
             <script id="scheda-template" type="text/x-handlebars-template">
                 <div class="card">
                     <div class="card-text">
