@@ -80,11 +80,13 @@ $(document).ready(function(){
         return star;
 };
     //funzione bandierine
-     function flagg(siglaStato) {                                 //le due 'g' sono un omaggio a Stephen King
+     function flagg(siglaStato) {         //le due 'g' sono un omaggio a Stephen King
          console.log(siglaStato);
           var bandiera = siglaStato;
           if (siglaStato == 'en') {
                bandiera = 'us';
+          } else if (siglaStato == 'ja'){
+              bandiera = 'jp';
           }
           return bandiera;
      };

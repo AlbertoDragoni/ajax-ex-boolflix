@@ -36,6 +36,7 @@ header {
     color: red;
 }
 .stars {
+    color: yellow;
     display: flex;
     width: 120px;
     height: 40px;
