@@ -20,9 +20,9 @@ $(document).ready(function(){
         };
     });
 
-    $('.locandina').click(function(){
-        $('.locandina').css('display', 'none');
-        $('.movie-infos').css('display', 'block');
+    $('.card').mouseover(function(){
+        $('.movie-infos').css('visibility', 'visible');
+        $('.series-infos').css('visibility', 'visible');
     });
 
 

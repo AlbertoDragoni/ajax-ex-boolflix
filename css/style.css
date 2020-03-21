@@ -52,31 +52,39 @@ header {
     display: flex;
     margin-top: 12px;
     width: 185px;
-    height: 450px;
+    height: 260px;
     background-color: black;
     margin-left: 10px;
     color: white;
     position: relative;
 }
 
-.locandina img {
+#locandina-movie {
     width: 160px;
     height: 230px;
     margin-top: 12px;
     margin-left: 10px;
     cursor: pointer;
 }
+
 .movie-infos {
+    background-color: black;
+    position: absolute; top: 0; left: 6px;
     margin-left: 6px;
     margin-top: 8px;
-    width: 160px;
-    height: 230px;
+    width: 175px;
+    height: 240px;
+    visibility: hidden;
 }
 .series-infos {
     margin-left: 6px;
     margin-top: 8px;
     width: 160px;
     height: 230px;
+    visibility: hidden;
+}
+.series-infos.visible {
+    display: block;
 }
 .card-text-serie {
     color: white;
