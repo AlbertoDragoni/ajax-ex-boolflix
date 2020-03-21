@@ -21,18 +21,19 @@
                 </div>
             </header>
             <div class="container-interno-film"> </div>
-            <div class="container-interno-serie"> </div>
             <!-- template per film e serie -->
             <script id="scheda-template" type="text/x-handlebars-template">
                 <div class="card">
                     <div class="card-text">
                         <div class="locandina"><img src="https://image.tmdb.org/t/p/w185/{{movieCover}}"></div>
-                        <p>Titolo: <span>{{titolo}}</span></p>
-                        <p>Titolo originale: <span>{{titoloOriginale}}</span></p>
-                        <p>Lingua originale: <span>{{lingua}}</span></p>
-                        <p>Voto: <span>{{voto}}</span></p>
-                        <div class="bandiera"><img src="https://www.countryflags.io/{{siglaStato}}/flat/64.png"></div>
-                        <div class="stars">{{{stelle}}}</div>
+                        <div class="movie-infos">
+                            <p>Titolo: <span>{{titolo}}</span></p>
+                            <p>Titolo originale: <span>{{titoloOriginale}}</span></p>
+                            <p>Lingua originale: <span>{{lingua}}</span></p>
+                            <p>Voto: <span>{{voto}}</span></p>
+                            <div class="bandiera"><img src="https://www.countryflags.io/{{siglaStato}}/flat/64.png"></div>
+                            <div class="stars">{{{stelle}}}</div>
+                        </div>
                     </div>
                 </div>
             </script>
@@ -40,10 +41,12 @@
                 <div class="card">
                     <div class="card-text-serie">
                         <div class="locandina"><img src="https://image.tmdb.org/t/p/w185/{{movieCover}}"></div>
-                        <p>Titolo: <span>{{titolo}}</span></p>
-                        <p>Titolo originale: <span>{{titoloOriginale}}</span></p>
-                        <p>Lingua originale: <span>{{lingua}}</span></p>
-                        <p>Voto: <span>{{voto}}</span></p>
+                        <div class="series-infos">
+                            <p>Titolo: <span>{{titolo}}</span></p>
+                            <p>Titolo originale: <span>{{titoloOriginale}}</span></p>
+                            <p>Lingua originale: <span>{{lingua}}</span></p>
+                            <p>Voto: <span>{{voto}}</span></p>
+                        </div>
                     </div>
                 </div>
             </script>

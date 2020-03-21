@@ -20,6 +20,12 @@ $(document).ready(function(){
         };
     });
 
+    $('.locandina').click(function(){
+        $('.locandina').css('display', 'none');
+        $('.movie-infos').css('display', 'block');
+    });
+
+
     //funzione per trovare numero intero da 1 a 5;
     function votoInteger(vote) {
     var votoFilm = Math.ceil(vote / 2);
@@ -45,7 +51,6 @@ $(document).ready(function(){
                 for (var i = 0; i < films.length; i++) {
                     var film = films[i];
                     var vote = votoInteger(film.vote_average);//utilizzo la funzione voteInteger per trovare intero da 1 a 5
-                    console.log(vote);
                     var movieTemplate = {
                         movieCover: film.poster_path,
                         titolo: film.title,
@@ -81,7 +86,6 @@ $(document).ready(function(){
 };
     //funzione bandierine
      function flagg(siglaStato) {         //le due 'g' sono un omaggio a Stephen King
-         console.log(siglaStato);
           var bandiera = siglaStato;
           if (siglaStato == 'en') {
                bandiera = 'us';
@@ -107,13 +111,9 @@ $(document).ready(function(){
             method: 'GET',
             success: function(data){
                 var series = data.results;
-                console.log(series);
-                $('.container-interno-film').empty();
                 for (var i = 0; i < series.length; i++) {
                     var serie = series[i];
-                    console.log(serie);
                     var vote = votoInteger(serie.vote_average);//utilizzo la funzione voteInteger per trovare intero da 1 a 5
-                    console.log(vote);
                     var serieTemplate = {
                         movieCover: serie.poster_path,
                         titolo: serie.name,

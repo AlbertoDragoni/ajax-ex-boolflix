@@ -8,12 +8,14 @@
     min-height: 100vh;
     background-color: black;
 }
+/* header */
 header {
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: 80px;
     background-color: #222222;
+    border-bottom: 1px solid gray;
 }
 .logo-boolflix h3 {
     color: red;
@@ -37,27 +39,50 @@ header {
     width: 80px;
     border-radius: 5px;
 }
+/* inizio parte centrale */
 .container-interno-film {
+    display: flex;
+    flex-wrap: wrap;
     margin: 0 auto;
     width: 800px;
-    min-height: 100%;
+    min-height: 100vh;
     background-color: #222222;
 }
-
 .card {
-    width: 180px;
-    height: 300px;
+    display: flex;
+    margin-top: 12px;
+    width: 185px;
+    height: 450px;
     background-color: black;
-}
-.card-text {
+    margin-left: 10px;
     color: white;
+    position: relative;
+}
+
+.locandina img {
+    width: 160px;
+    height: 230px;
+    margin-top: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.movie-infos {
+    margin-left: 6px;
+    margin-top: 8px;
+    width: 160px;
+    height: 230px;
+}
+.series-infos {
+    margin-left: 6px;
+    margin-top: 8px;
+    width: 160px;
+    height: 230px;
 }
 .card-text-serie {
-    color: red;
+    color: white;
 }
-.locandina {
-    width: 100%;
-    height: 100%;
+.bandiera img {
+    width: 50px;
 }
 .stars {
     color: yellow;
