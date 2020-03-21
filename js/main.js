@@ -44,7 +44,6 @@ $(document).ready(function(){
                 $('.container-interno-film').empty();
                 for (var i = 0; i < films.length; i++) {
                     var film = films[i];
-                    console.log(film);
                     var vote = votoInteger(film.vote_average);//utilizzo la funzione voteInteger per trovare intero da 1 a 5
                     console.log(vote);
                     var movieTemplate = {
@@ -109,6 +108,7 @@ $(document).ready(function(){
             success: function(data){
                 var series = data.results;
                 console.log(series);
+                $('.container-interno-film').empty();
                 for (var i = 0; i < series.length; i++) {
                     var serie = series[i];
                     console.log(serie);

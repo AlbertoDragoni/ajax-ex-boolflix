@@ -35,6 +35,10 @@ header {
 .card-text-serie {
     color: red;
 }
+.locandina {
+    width: 100%;
+    height: 100%;
+}
 .stars {
     color: yellow;
     display: flex;
