@@ -63,6 +63,7 @@ $(document).ready(function(){
                         titolo: film.title,
                         titoloOriginale: film.original_title,
                         lingua: film.original_language,
+                        trama: film.overview,
                         voto: vote,
                         siglaStato: flagg(film.original_language),
                         stelle: stars(vote),
@@ -126,6 +127,7 @@ $(document).ready(function(){
                         titolo: serie.name,
                         titoloOriginale: serie.original_name,
                         lingua: serie.original_language,
+                        trama: film.overview,
                         voto: vote
                     };
 
