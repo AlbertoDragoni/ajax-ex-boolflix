@@ -35,11 +35,9 @@ $(document).ready(function(){
         if (path !== null) {
             return imgBaseUrl + imgSize + path;
         } else {
-            return 'non esiste';
+            return 'https://i1.kym-cdn.com/entries/icons/facebook/000/019/277/travvy.JPG';
         }
-    }
-
-
+    };
 
     //funzione per la ricerca di film;
     function cercaFilm() {
