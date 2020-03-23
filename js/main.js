@@ -127,7 +127,7 @@ $(document).ready(function(){
                         titolo: serie.name,
                         titoloOriginale: serie.original_name,
                         lingua: serie.original_language,
-                        trama: film.overview,
+                        trama: serie.overview,
                         voto: vote
                     };
 
