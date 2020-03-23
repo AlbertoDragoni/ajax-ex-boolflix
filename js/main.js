@@ -130,7 +130,6 @@ $(document).ready(function(){
                         trama: serie.overview,
                         voto: vote
                     };
-
                     var schedaSerie = templateSerie(serieTemplate);
                     $('.container-interno-film').append(schedaSerie);
                 };
