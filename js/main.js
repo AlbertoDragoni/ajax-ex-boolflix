@@ -3,6 +3,10 @@ $(document).ready(function(){
 
 
     var apiBaseUrl = 'https://api.themoviedb.org/3'; //variabile dell'url di base della chiamata API
+    var imgBaseUrl = 'https://image.tmdb.org/t/p/';
+    var imgSize = 'w342';
+
+
 
     $('input').val('');                             //pulisco l'input dal testo precedente
     $('button').click(function(){                    //al click sul bottone esegui funzione cercaFilm
@@ -20,17 +24,22 @@ $(document).ready(function(){
         };
     });
 
-    $('.card').mouseover(function(){
-        $('.movie-infos').css('visibility', 'visible');
-        $('.series-infos').css('visibility', 'visible');
-    });
-
-
     //funzione per trovare numero intero da 1 a 5;
     function votoInteger(vote) {
     var votoFilm = Math.ceil(vote / 2);
     return votoFilm;
     };
+
+    //funzione per locandina film
+    function poster(path) {
+        if (path !== null) {
+            return imgBaseUrl + imgSize + path;
+        } else {
+            return 'non esiste';
+        }
+    }
+
+
 
     //funzione per la ricerca di film;
     function cercaFilm() {
@@ -52,7 +61,7 @@ $(document).ready(function(){
                     var film = films[i];
                     var vote = votoInteger(film.vote_average);//utilizzo la funzione voteInteger per trovare intero da 1 a 5
                     var movieTemplate = {
-                        movieCover: film.poster_path,
+                        movieCover: poster(film.poster_path),
                         titolo: film.title,
                         titoloOriginale: film.original_title,
                         lingua: film.original_language,
@@ -115,7 +124,7 @@ $(document).ready(function(){
                     var serie = series[i];
                     var vote = votoInteger(serie.vote_average);//utilizzo la funzione voteInteger per trovare intero da 1 a 5
                     var serieTemplate = {
-                        movieCover: serie.poster_path,
+                        movieCover: poster(serie.poster_path),
                         titolo: serie.name,
                         titoloOriginale: serie.original_name,
                         lingua: serie.original_language,
