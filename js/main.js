@@ -62,13 +62,14 @@ $(document).ready(function(){
                         movieCover: poster(film.poster_path),
                         titolo: film.title,
                         titoloOriginale: film.original_title,
+                        genere: genere(film.genre_ids),
                         lingua: film.original_language,
                         trama: film.overview,
                         voto: vote,
                         siglaStato: flagg(film.original_language),
                         stelle: stars(vote),
                     };
-
+                    console.log(movieTemplate.genere);
                     var schedaFilm = templateFilm(movieTemplate);
                     $('.container-interno-film').append(schedaFilm);
                 };
@@ -79,6 +80,54 @@ $(document).ready(function(){
             }
         });
     };
+
+    //funzione per selezionare genere
+    function genere (genre) {
+        var genereFilm = genre;
+        var nomeGenere = '';
+        for (var i = 0; i < genre.length; i++) {
+            switch(genereFilm[i]) {
+                case 28:
+                    nomeGenere = 'azione';
+                break;
+                case 12:
+                    nomeGenere = 'avventura';
+                break;
+                case 16:
+                    nomeGenere = 'animazione';
+                break;
+                case 35:
+                    nomeGenere = 'commedia';
+                break;
+                case 80:
+                    nomeGenere = 'crime';
+                break;
+                case 18:
+                    nomeGenere = 'drammatico';
+                break;
+                case 53:
+                    nomeGenere = 'thriller';
+                break;
+                case 10752:
+                    nomeGenere = 'guerra';
+                break;
+                case 27:
+                    nomeGenere = 'horror';
+                break;
+                case 878:
+                    nomeGenere = 'fantascienza';
+                break;
+                case 37:
+                    nomeGenere = 'western';
+                break;
+                default:
+                    nomeGenere = 'non definito';
+                break;
+            };
+        };
+        return nomeGenere;
+    };
+
 
     //funzione per voto a stelle
     function stars (voto) {
@@ -91,7 +140,7 @@ $(document).ready(function(){
             }
         }
         return star;
-};
+    };
     //funzione bandierine
      function flagg(siglaStato) {         //le due 'g' sono un omaggio a Stephen King
           var bandiera = siglaStato;

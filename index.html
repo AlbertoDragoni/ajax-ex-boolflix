@@ -23,21 +23,22 @@
             <div class="container-interno-film"> </div>
             <!-- template per film e serie -->
             <script id="scheda-template" type="text/x-handlebars-template">
-                <div class="card">
-                    <div class="card-text">
-                        <div class="locandina"><img id="locandina-movie" src="{{movieCover}}"></div>
-                        <div class="movie-infos">
-                            <p>TITOLO: <span>{{titolo}}</span></p>
-                            <p>TITOLO ORIGINALE: <span>{{titoloOriginale}}</span></p>
-                            <p>LINGUA ORIGINALE: <span>{{lingua}}</span></p>
-                            <p>TRAMA: <span>{{trama}}</span></p>
-                            <p>VOTO: <span>{{voto}}</span></p>
-                            <div class="bandiera"><img src="https://www.countryflags.io/{{siglaStato}}/flat/64.png"></div>
-                            <div class="stars">{{{stelle}}}</div>
-                        </div>
-                    </div>
+        <div class="card">
+            <div class="card-text">
+                <div class="locandina"><img id="locandina-movie" src="{{movieCover}}"></div>
+                <div class="movie-infos">
+                    <p>TITOLO: <span>{{titolo}}</span></p>
+                    <p>TITOLO ORIGINALE: <span>{{titoloOriginale}}</span></p>
+                    <p>LINGUA ORIGINALE: <span>{{lingua}}</span></p>
+                    <p>GENERE: <span>{{genere}}</span></p>
+                    <p>TRAMA: <span>{{trama}}</span></p>
+                    <p>VOTO: <span>{{voto}}</span></p>
+                    <div class="bandiera"><img src="https://www.countryflags.io/{{siglaStato}}/flat/64.png"></div>
+                    <div class="stars">{{{stelle}}}</div>
                 </div>
-            </script>
+            </div>
+        </div>
+    </script>
             <script id="scheda-template-serie" type="text/x-handlebars-template">
                 <div class="card">
                     <div class="card-text-serie">
